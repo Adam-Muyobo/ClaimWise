@@ -25,6 +25,7 @@ ClaimWise is a Java application designed for managing various aspects of an insu
 
 - Always upload your code via a branch and keep your branches up to date with the main branch. This practice facilitates collaboration and minimizes conflicts.
 - Use Git Bash instead of a GUI for better control over your Git commands.
+- Inside Application/src/main/resources there is an application.template.properties file change it to application.properties
 - Update the database details in the `application.properties` file to match your own.
 - Do **not** open the entire project in IntelliJ; instead, open the project folder.
 - For DataGrip, open the entire project folder for database access.
