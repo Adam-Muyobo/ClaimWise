@@ -12,7 +12,7 @@ public class PolicyService {
     public Policy getPolicyById(int policyNumber) {
         String sql = "SELECT PolicyNumber, PolicyHolderID, PolicyName, PolicyType, PolicyCost, expiryDate FROM t_policy WHERE PolicyNumber = ?";
         try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, policyNumber);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
