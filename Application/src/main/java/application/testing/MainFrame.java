@@ -155,7 +155,7 @@ public class MainFrame extends JFrame {
         // Insert button action
         insertButton.addActionListener(e -> {
             String policyName = policyNameField.getText();
-            Policy policy = new Policy(0, "PH123", policyName, "Life", new BigDecimal(500), new Date());
+            Policy policy = new Policy(0, "PH001", policyName, "Life", new BigDecimal(5000), new Date());
             boolean success = policyService.insertPolicy(policy);
             policyTextArea.setText(success ? "Policy inserted successfully." : "Error inserting policy.");
         });
