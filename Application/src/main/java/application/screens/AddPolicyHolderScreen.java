@@ -39,7 +39,7 @@ public class AddPolicyHolderScreen extends JFrame {
         add(new JLabel("Date of Birth:"));
         dobField = new JTextField();
         add(dobField);
-
+        
         add(new JLabel("Company Name:"));
         companyField = new JTextField();
         add(companyField);

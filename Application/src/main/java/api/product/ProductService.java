@@ -8,7 +8,7 @@ public class ProductService {
 
     // Retrieve a product by ProductNo
     public Product getProductByNo(int productNo) {
-        String query = "SELECT ProductNo, ProductType, AreaName, PolicyNumber FROM T_Product WHERE ProductNo = ?";
+        String query = "SELECT ProductNo, ProductType, AreaName, PolicyNumber FROM t_product WHERE ProductNo = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 
@@ -31,7 +31,7 @@ public class ProductService {
 
     // Retrieve all products
     public List<Product> getAllProducts() {
-        String query = "SELECT ProductNo, ProductType, AreaName, PolicyNumber FROM T_Product";
+        String query = "SELECT ProductNo, ProductType, AreaName, PolicyNumber FROM t_product";
         List<Product> productList = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection();
@@ -54,9 +54,10 @@ public class ProductService {
 
     // Handler method to set common fields in PreparedStatement
     private void productHandler(Product product, PreparedStatement pstmt) throws SQLException {
-    pstmt.setString(1, product.getProductType());
-    pstmt.setString(2, product.getAreaName());
-        pstmt.setInt(3, product.getPolicyNumber());
+        pstmt.setInt(1, product.getProductNo());
+        pstmt.setString(2, product.getProductType());
+        pstmt.setString(3, product.getAreaName());
+        pstmt.setInt(4, product.getPolicyNumber());
     }
 
     // Insert a new product
@@ -66,7 +67,7 @@ public class ProductService {
             return false;
         }
 
-        String query = "INSERT INTO T_Product (ProductType, AreaName, PolicyNumber) VALUES (?, ?, ?)";
+        String query = "INSERT INTO t_product (ProductNo, ProductType, AreaName, PolicyNumber) VALUES (?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 
@@ -81,7 +82,7 @@ public class ProductService {
 
     // Update a product
     public boolean updateProduct(int productNo, Product product) {
-        String query = "UPDATE T_Product SET ProductType = ?, AreaName = ?, PolicyNumber = ? WHERE ProductNo = ?";
+        String query = "UPDATE t_product SET ProductType = ?, AreaName = ?, PolicyNumber = ? WHERE ProductNo = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 
@@ -96,7 +97,7 @@ public class ProductService {
 
     // Delete a product
     public boolean deleteProduct(int productNo) {
-        String query = "DELETE FROM T_Product WHERE ProductNo = ?";
+        String query = "DELETE FROM t_product WHERE ProductNo = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 

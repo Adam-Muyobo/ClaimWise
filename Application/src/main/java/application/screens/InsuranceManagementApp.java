@@ -20,6 +20,7 @@ public class InsuranceManagementApp extends JFrame {
         JButton claimsReportButton = new JButton("Generate Claims Report");
         JButton subscriptionsReportButton = new JButton("Generate Subscriptions Report");
         JButton profitReportButton = new JButton("Generate Profit Report");
+        JButton addProductButton = new JButton("Add New Product");
 
         addPolicyHolderButton.addActionListener(e -> new AddPolicyHolderScreen());
         viewPolicyHoldersButton.addActionListener(e -> new ViewPolicyHoldersScreen());
@@ -28,6 +29,7 @@ public class InsuranceManagementApp extends JFrame {
         // claimsReportButton.addActionListener(e -> new ClaimsReportScreen());
         // subscriptionsReportButton.addActionListener(e -> new SubscriptionsReportScreen());
        // profitReportButton.addActionListener(e -> new ProfitReportScreen());
+       addProductButton.addActionListener(e -> new AddProductScreen());
 
         add(addPolicyHolderButton);
         add(viewPolicyHoldersButton);
@@ -36,6 +38,7 @@ public class InsuranceManagementApp extends JFrame {
         add(claimsReportButton);
         add(subscriptionsReportButton);
         add(profitReportButton);
+        add(addProductButton);
 
         setVisible(true);
     }
