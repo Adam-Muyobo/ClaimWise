@@ -59,6 +59,11 @@ public class ReinsurerService {
 
     // Insert a new reinsurer
     public boolean insertReinsurer(Reinsurer reinsurer) {
+        if (reinsurer == null || reinsurer.getReinsurerName() == null || reinsurer.getReinsurerLocation() == null) {
+            System.err.println("Invalid reinsurer data provided.");
+            return false;
+        }
+
         String query = "INSERT INTO T_Reinsurer (ReinsurerName, ReinsurerLocation) VALUES (?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -70,6 +75,7 @@ public class ReinsurerService {
         }
         return false;
     }
+
 
     // Update an existing reinsurer
     public boolean updateReinsurer(int reinsurerID, Reinsurer reinsurer) {

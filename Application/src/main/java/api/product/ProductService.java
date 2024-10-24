@@ -61,6 +61,11 @@ public class ProductService {
 
     // Insert a new product
     public boolean insertProduct(Product product) {
+        if (product == null || product.getProductType() == null || product.getAreaName() == null) {
+            System.err.println("Invalid product data provided.");
+            return false;
+        }
+
         String query = "INSERT INTO T_Product (ProductType, AreaName, PolicyNumber) VALUES (?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -72,6 +77,7 @@ public class ProductService {
         }
         return false;
     }
+
 
     // Update a product
     public boolean updateProduct(int productNo, Product product) {
