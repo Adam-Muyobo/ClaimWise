@@ -1,6 +1,7 @@
 package api.policy;
 
 import api.DatabaseConnection;
+import application.screens.AddPolicyScreen;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -64,7 +65,7 @@ public class PolicyService {
     }
 
     // Insert new Policy
-    public boolean insertPolicy(application.screens.Policy newPolicy) {
+    public boolean insertPolicy(Policy newPolicy) {
         String sql = "INSERT INTO t_policy (PolicyHolderID, PolicyName, PolicyType, PolicyCost, expiryDate) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
