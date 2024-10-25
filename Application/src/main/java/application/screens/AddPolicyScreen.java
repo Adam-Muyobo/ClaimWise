@@ -1,6 +1,6 @@
 package application.screens;
 
-import api.policy.Policy;
+import api.policy.*;
 import api.policy.PolicyService;
 
 import javax.swing.*;
@@ -80,4 +80,5 @@ public class AddPolicyScreen extends JFrame {
 
         setVisible(true);
     }
+   
 }
