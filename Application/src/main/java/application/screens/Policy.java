@@ -6,7 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
 
-public class POLICYM extends JFrame {
+public class Policy extends JFrame {
     private JFrame addPolicyFrame;
     private JFrame updatePolicyFrame;
     private PolicyService policyService;
