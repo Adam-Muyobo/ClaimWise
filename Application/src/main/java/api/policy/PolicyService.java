@@ -2,6 +2,7 @@ package api.policy;
 
 import api.DatabaseConnection;
 
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,17 +65,20 @@ public class PolicyService {
     }
 
     // Insert new Policy
-    public boolean insertPolicy(Policy policy) {
+    public boolean insertPolicy(Policy newPolicy) {
         String sql = "INSERT INTO t_policy (PolicyHolderID, PolicyName, PolicyType, PolicyCost, expiryDate) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            policyHandling(policy, pstmt);
+            System.out.println("Inserting policy with details: " + newPolicy); // Log new policy details
+            policyHandling(newPolicy, pstmt);
             return pstmt.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Error inserting policy: " + e.getMessage());
+            e.printStackTrace();  // This line will help to print the stack trace for debugging
         }
         return false;
     }
+    
 
     // Update existing Policy
     public boolean updatePolicy(int policyNumber, Policy newPolicy) {

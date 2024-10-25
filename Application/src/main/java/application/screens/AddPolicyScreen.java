@@ -1,6 +1,6 @@
 package application.screens;
 
-import api.policy.*;
+import api.policy.Policy;
 import api.policy.PolicyService;
 
 import javax.swing.*;
@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 
 public class AddPolicyScreen extends JFrame {
-    
     private final JTextField policyNameField;
     private final JTextField policyTypeField;
     private final JTextField policyHolderIDField;
