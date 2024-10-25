@@ -11,14 +11,14 @@ public class PolicyHolder {
     private String phoneNumber;
     
 
-    public PolicyHolder(String policyHolderID, String firstName, String lastName, Date dateOfBirth, String companyName, String address, String phoneNumber) {
+    public PolicyHolder(String policyHolderID, String firstName, String lastName,String companyName, String phoneNumber, Date dateOfBirth, String address) {
         this.policyHolderID = policyHolderID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.companyName = companyName;
-        this.address = address;
         this.phoneNumber = phoneNumber;
         this.dateOfBirth = dateOfBirth;
+        this.address = address;
     }
 
     public String getPolicyHolderID() {

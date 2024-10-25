@@ -9,7 +9,7 @@ public class ReinsurerService {
 
     // Retrieve a reinsurer by ID
     public Reinsurer getReinsurerByID(int reinsurerID) {
-        String query = "SELECT ReinsurerID, ReinsurerName, ReinsurerLocation FROM T_Reinsurer WHERE ReinsurerID = ?";
+        String query = "SELECT ReinsurerID, ReinsurerName, ReinsurerLocation FROM t_reinsurer WHERE ReinsurerID = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 
@@ -31,7 +31,7 @@ public class ReinsurerService {
 
     // Retrieve all reinsurers
     public List<Reinsurer> getAllReinsurers() {
-        String query = "SELECT ReinsurerID, ReinsurerName, ReinsurerLocation FROM T_Reinsurer";
+        String query = "SELECT ReinsurerID, ReinsurerName, ReinsurerLocation FROM t_reinsurer";
         List<Reinsurer> reinsurerList = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection();
@@ -59,7 +59,12 @@ public class ReinsurerService {
 
     // Insert a new reinsurer
     public boolean insertReinsurer(Reinsurer reinsurer) {
-        String query = "INSERT INTO T_Reinsurer (ReinsurerName, ReinsurerLocation) VALUES (?, ?)";
+        if (reinsurer == null || reinsurer.getReinsurerName() == null || reinsurer.getReinsurerLocation() == null) {
+            System.err.println("Invalid reinsurer data provided.");
+            return false;
+        }
+
+        String query = "INSERT INTO t_reinsurer (ReinsurerName, ReinsurerLocation) VALUES (?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 
@@ -71,9 +76,10 @@ public class ReinsurerService {
         return false;
     }
 
+
     // Update an existing reinsurer
     public boolean updateReinsurer(int reinsurerID, Reinsurer reinsurer) {
-        String query = "UPDATE T_Reinsurer SET ReinsurerName = ?, ReinsurerLocation = ? WHERE ReinsurerID = ?";
+        String query = "UPDATE t_reinsurer SET ReinsurerName = ?, ReinsurerLocation = ? WHERE ReinsurerID = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 
@@ -88,7 +94,7 @@ public class ReinsurerService {
 
     // Delete a reinsurer
     public boolean deleteReinsurer(int reinsurerID) {
-        String query = "DELETE FROM T_Reinsurer WHERE ReinsurerID = ?";
+        String query = "DELETE FROM t_reinsurer WHERE ReinsurerID = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 

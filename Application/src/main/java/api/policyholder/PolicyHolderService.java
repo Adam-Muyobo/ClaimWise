@@ -9,7 +9,7 @@ import java.util.List;
 public class PolicyHolderService {
 
     public PolicyHolder getPolicyHolderByID(String phID){
-        String query = "SELECT PolicyHolderID, FirstName, LastName, DOB, CompanyName, phoneNumber, Address FROM T_PolicyHolder WHERE PolicyHolderID = ?  ";
+        String query = "SELECT PolicyHolderID, FirstName, LastName, DOB, CompanyName, phoneNumber, Address FROM t_policyholder WHERE PolicyHolderID = ?  ";
 
         try (Connection conn = DatabaseConnection.getConnection();
         PreparedStatement pstmt = conn.prepareStatement(query); ){
@@ -21,9 +21,9 @@ public class PolicyHolderService {
                     rs.getString("PolicyHolderID"),
                     rs.getString("Firstname"),
                     rs.getString("LastName"),
-                    rs.getDate("DOB"),
                     rs.getString("CompanyName"),
                     rs.getString("phoneNumber"),
+                    rs.getDate("DOB"),
                     rs.getString("Address")
                 );
             }  
@@ -35,7 +35,7 @@ public class PolicyHolderService {
 
     //Retrieving all Policyholders
     public List<PolicyHolder> getAllPolicyHolders(){
-        String query = "SELECT PolicyHolderID, FirstName, LastName, DOB, CompanyName, phoneNumber, Address FROM T_PolicyHolder";
+        String query = "SELECT PolicyHolderID, FirstName, LastName, DOB, CompanyName, phoneNumber, Address FROM t_policyholder";
         List<PolicyHolder> phList = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection();
@@ -48,9 +48,9 @@ public class PolicyHolderService {
                     rs.getString("PolicyHolderID"),
                     rs.getString("Firstname"),
                     rs.getString("LastName"),
-                    rs.getDate("DOB"),
                     rs.getString("CompanyName"),
                     rs.getString("phoneNumber"),
+                    rs.getDate("DOB"),
                     rs.getString("Address"))
                 );
             }  
@@ -64,14 +64,14 @@ public class PolicyHolderService {
         pstmt.setString(1, policyHolder.getPolicyHolderID());
         pstmt.setString(2, policyHolder.getFirstName());
         pstmt.setString(3, policyHolder.getLastName());
-        pstmt.setDate(4, new java.sql.Date(policyHolder.getDateOfBirth().getTime()));
-        pstmt.setString(5, policyHolder.getCompanyName());
-        pstmt.setString(6, policyHolder.getPhoneNumber());
+        pstmt.setString(4, policyHolder.getCompanyName());
+        pstmt.setString(5, policyHolder.getPhoneNumber());
+        pstmt.setDate(6, new java.sql.Date(policyHolder.getDateOfBirth().getTime()));
         pstmt.setString(7, policyHolder.getAddress());
     }
     
     public boolean insertPolicyHolder(PolicyHolder ph){
-        String query = "INSERT INTO T_PolicyHolder (PolicyHolderID, FirstName, LastName, DOB, CompanyName, phoneNumber, Address) VALUES(?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO t_policyholder (PolicyHolderID, FirstName, LastName, DOB, CompanyName, phoneNumber, Address) VALUES(?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
          PreparedStatement pstmt = conn.prepareStatement(query)) {
             policyHolderHandling(ph, pstmt);
@@ -85,7 +85,7 @@ public class PolicyHolderService {
     }
 
     public boolean updatePolicyHolder(String policyHolderID, PolicyHolder newPolicyHolder) {
-        String query = "UPDATE T_PolicyHolder SET FirstName = ?, LastName = ?, DOB = ?, CompanyName = ?, phoneNumber = ?, Address = ? WHERE PolicyHolderID = ?";
+        String query = "UPDATE t_policyholder SET FirstName = ?, LastName = ?, DOB = ?, CompanyName = ?, phoneNumber = ?, Address = ? WHERE PolicyHolderID = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
             policyHolderHandling(newPolicyHolder, pstmt);
@@ -98,7 +98,7 @@ public class PolicyHolderService {
     }
 
     public boolean deletePolicyHolder(String policyHolderID) {
-        String query = "DELETE FROM T_PolicyHolder WHERE PolicyHolderID = ?";
+        String query = "DELETE FROM t_policyholder WHERE PolicyHolderID = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
             

@@ -10,7 +10,7 @@ public class BrokerService {
     // Retrieve a broker by their ID
     public Broker getBrokerByID(int brokerID){
 
-        String query = "SELECT BrokerID, BrokerName, PolicyNumber FROM T_Broker WHERE BrokerID = ?";
+        String query = "SELECT BrokerID, BrokerName, PolicyNumber FROM t_broker WHERE BrokerID = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -33,7 +33,7 @@ public class BrokerService {
 
     // Retrieving all brokers
     public List<Broker> getAllBrokers() {
-        String query = "SELECT BrokerID, BrokerName, PolicyNumber FROM T_Broker";
+        String query = "SELECT BrokerID, BrokerName, PolicyNumber FROM t_broker";
         List<Broker> brokerList = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection();
@@ -62,7 +62,7 @@ public class BrokerService {
 
     // Insert a new broker
     public boolean insertBroker(Broker broker) {
-        String query = "INSERT INTO T_Broker (BrokerName, PolicyNumber) VALUES (?, ?)";
+        String query = "INSERT INTO t_broker (BrokerName, PolicyNumber) VALUES (?, ?)";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -78,7 +78,7 @@ public class BrokerService {
 
     // Update an existing broker
     public boolean updateBroker(int brokerID, Broker newBroker) {
-        String query = "UPDATE T_Broker SET BrokerName = ?, PolicyNumber = ? WHERE BrokerID = ?";
+        String query = "UPDATE t_broker SET BrokerName = ?, PolicyNumber = ? WHERE BrokerID = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -95,7 +95,7 @@ public class BrokerService {
 
     // Delete a broker by their ID
     public boolean deleteBroker(int brokerID) {
-        String query = "DELETE FROM T_Broker WHERE BrokerID = ?";
+        String query = "DELETE FROM t_broker WHERE BrokerID = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
