@@ -21,9 +21,9 @@ public class PolicyHolderService {
                     rs.getString("PolicyHolderID"),
                     rs.getString("Firstname"),
                     rs.getString("LastName"),
-                    rs.getDate("DOB"),
                     rs.getString("CompanyName"),
                     rs.getString("phoneNumber"),
+                    rs.getDate("DOB"),
                     rs.getString("Address")
                 );
             }  
@@ -48,9 +48,9 @@ public class PolicyHolderService {
                     rs.getString("PolicyHolderID"),
                     rs.getString("Firstname"),
                     rs.getString("LastName"),
-                    rs.getDate("DOB"),
                     rs.getString("CompanyName"),
                     rs.getString("phoneNumber"),
+                    rs.getDate("DOB"),
                     rs.getString("Address"))
                 );
             }  

@@ -36,10 +36,6 @@ public class AddPolicyHolderScreen extends JFrame {
         lastNameField = new JTextField();
         add(lastNameField);
 
-        add(new JLabel("Date of Birth:"));
-        dobField = new JTextField();
-        add(dobField);
-        
         add(new JLabel("Company Name:"));
         companyField = new JTextField();
         add(companyField);
@@ -47,6 +43,11 @@ public class AddPolicyHolderScreen extends JFrame {
         add(new JLabel("Phone Number:"));
         phoneField = new JTextField();
         add(phoneField);
+
+        add(new JLabel("Date of Birth:"));
+        dobField = new JTextField();
+        add(dobField);
+        
 
         add(new JLabel("Address:"));
         addressField = new JTextField();
@@ -60,9 +61,9 @@ public class AddPolicyHolderScreen extends JFrame {
                         policyHolderIDField.getText(),
                         firstNameField.getText(),
                         lastNameField.getText(),
-                        java.sql.Date.valueOf(dobField.getText()),
                         companyField.getText(),
                         phoneField.getText(),
+                        java.sql.Date.valueOf(dobField.getText()),
                         addressField.getText()
                 );
 
