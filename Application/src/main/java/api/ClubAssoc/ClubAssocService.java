@@ -8,7 +8,7 @@ public class ClubAssocService {
 
     // Retrieve a Club Association by name
     public ClubAssoc getClubAssocByName(String caName) {
-        String query = "SELECT CAName FROM T_ClubAssoc WHERE CAName = ?";
+        String query = "SELECT CAName FROM t_clubassoc WHERE CAName = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 
@@ -27,7 +27,7 @@ public class ClubAssocService {
     //Retrieve all Club Associations
 
     public List<ClubAssoc> getAllClubAssocs() {
-        String query = "SELECT CAName FROM T_ClubAssoc";
+        String query = "SELECT CAName FROM t_clubassoc";
         List<ClubAssoc> caList = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection();
@@ -45,7 +45,7 @@ public class ClubAssocService {
 
     // Insert a new Club Association
     public boolean insertClubAssoc(ClubAssoc clubAssoc) {
-        String query = "INSERT INTO T_ClubAssoc (CAName) VALUES (?)";
+        String query = "INSERT INTO t_clubassoc (CAName) VALUES (?)";
         try (Connection conn = DatabaseConnection.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(query)) {
 
@@ -59,7 +59,7 @@ public class ClubAssocService {
 
     // Update an existing Club Association name
     public boolean updateClubAssoc(String oldCaName, String newCaName) {
-        String query = "UPDATE T_ClubAssoc SET CAName = ? WHERE CAName = ?";
+        String query = "UPDATE t_clubassoc SET CAName = ? WHERE CAName = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 
@@ -74,7 +74,7 @@ public class ClubAssocService {
     
      // Delete a Club Association by name
      public boolean deleteClubAssoc(String caName) {
-        String query = "DELETE FROM T_ClubAssoc WHERE CAName = ?";
+        String query = "DELETE FROM t_clubassoc WHERE CAName = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 

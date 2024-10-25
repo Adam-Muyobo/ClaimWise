@@ -9,7 +9,7 @@ public class CompanyService {
 
     // Retrieve a company by company name
     public Company getCompanyByName(String companyName) {
-        String query = "SELECT CompanyName, CompanyLocation, PolicyNumber FROM T_InsuranceCompany WHERE CompanyName = ?";
+        String query = "SELECT CompanyName, CompanyLocation, PolicyNumber FROM t_insurancecompany WHERE CompanyName = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 
@@ -31,7 +31,7 @@ public class CompanyService {
 
      // Retrieve all companies
     public List<Company> getAllCompanies() {
-        String query = "SELECT CompanyName, CompanyLocation, PolicyNumber FROM T_InsuranceCompany";
+        String query = "SELECT CompanyName, CompanyLocation, PolicyNumber FROM t_insurancecompany";
         List<Company> companyList = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection();
@@ -61,7 +61,7 @@ public class CompanyService {
 
     // Insert a new company
     public boolean insertCompany(Company company) {
-        String query = "INSERT INTO T_InsuranceCompany (CompanyName, CompanyLocation, PolicyNumber) VALUES (?, ?, ?)";
+        String query = "INSERT INTO t_insurancecompany (CompanyName, CompanyLocation, PolicyNumber) VALUES (?, ?, ?)";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -77,7 +77,7 @@ public class CompanyService {
 
     // Update an existing company by company name
     public boolean updateCompany(String companyName, Company newCompany) {
-        String query = "UPDATE T_InsuranceCompany SET CompanyLocation = ?, PolicyNumber = ? WHERE CompanyName = ?";
+        String query = "UPDATE t_insurancecompany SET CompanyLocation = ?, PolicyNumber = ? WHERE CompanyName = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -95,7 +95,7 @@ public class CompanyService {
 
     // Delete a company by company name
     public boolean deleteCompany(String companyName) {
-        String query = "DELETE FROM T_InsuranceCompany WHERE CompanyName = ?";
+        String query = "DELETE FROM t_insurancecompany WHERE CompanyName = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {

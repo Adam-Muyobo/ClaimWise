@@ -8,7 +8,7 @@ import api.DatabaseConnection;
 public class ClaimService {
 
     public Claim getClaimByNumber(int claimNumber) {
-        String query = "SELECT ClaimNumber, PolicyNumber, claimType, ClaimDate, ClaimAmount FROM T_Claim WHERE ClaimNumber = ?";
+        String query = "SELECT ClaimNumber, PolicyNumber, claimType, ClaimDate, ClaimAmount FROM t_claim WHERE ClaimNumber = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 
@@ -32,7 +32,7 @@ public class ClaimService {
 
     // Retrieve all claims
     public List<Claim> getAllClaims() {
-        String query = "SELECT ClaimNumber, PolicyNumber, claimType, ClaimDate, ClaimAmount FROM T_Claim";
+        String query = "SELECT ClaimNumber, PolicyNumber, claimType, ClaimDate, ClaimAmount FROM t_claim";
         List<Claim> claimList = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection();
@@ -66,7 +66,7 @@ public class ClaimService {
 
     // Insert a new claim
     public boolean insertClaim(Claim claim) {
-        String query = "INSERT INTO T_Claim (PolicyNumber, claimType, ClaimDate, ClaimAmount) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO t_claim (PolicyNumber, claimType, ClaimDate, ClaimAmount) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -82,7 +82,7 @@ public class ClaimService {
 
     // Update an existing claim by claim number
     public boolean updateClaim(int claimNumber, Claim newClaim) {
-        String query = "UPDATE T_Claim SET PolicyNumber = ?, claimType = ?, ClaimDate = ?, ClaimAmount = ? WHERE ClaimNumber = ?";
+        String query = "UPDATE t_claim SET PolicyNumber = ?, claimType = ?, ClaimDate = ?, ClaimAmount = ? WHERE ClaimNumber = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -99,7 +99,7 @@ public class ClaimService {
 
     // Delete a claim by claim number
     public boolean deleteClaim(int claimNumber) {
-        String query = "DELETE FROM T_Claim WHERE ClaimNumber = ?";
+        String query = "DELETE FROM t_claim WHERE ClaimNumber = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
