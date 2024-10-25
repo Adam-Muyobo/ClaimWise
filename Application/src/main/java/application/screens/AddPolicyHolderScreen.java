@@ -12,9 +12,9 @@ public class AddPolicyHolderScreen extends JFrame {
     private final JTextField policyHolderIDField;
     private final JTextField firstNameField;
     private final JTextField lastNameField;
-    private final JTextField dobField;
     private final JTextField companyField;
     private final JTextField phoneField;
+    private final JTextField dobField;
     private final JTextField addressField;
 
     public AddPolicyHolderScreen() {
@@ -47,7 +47,6 @@ public class AddPolicyHolderScreen extends JFrame {
         add(new JLabel("Date of Birth:"));
         dobField = new JTextField();
         add(dobField);
-        
 
         add(new JLabel("Address:"));
         addressField = new JTextField();
@@ -57,25 +56,36 @@ public class AddPolicyHolderScreen extends JFrame {
         JButton addButton = new JButton("Add Policy Holder");
         addButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                PolicyHolder newPolicyHolder = new PolicyHolder(
+                try {
+                    // Parse the date input to ensure it's valid
+                    java.sql.Date dob = java.sql.Date.valueOf(dobField.getText());
+                    
+                    // Create a new PolicyHolder object with validated data
+                    PolicyHolder newPolicyHolder = new PolicyHolder(
                         policyHolderIDField.getText(),
                         firstNameField.getText(),
                         lastNameField.getText(),
                         companyField.getText(),
                         phoneField.getText(),
-                        java.sql.Date.valueOf(dobField.getText()),
+                        dob,
                         addressField.getText()
-                );
-
-                PolicyHolderService service = new PolicyHolderService();
-                if (service.insertPolicyHolder(newPolicyHolder)) {
-                    JOptionPane.showMessageDialog(null, "Policy Holder Added!");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Error Adding Policy Holder.");
+                    );
+        
+                    // Insert PolicyHolder and show message
+                    PolicyHolderService service = new PolicyHolderService();
+                    if (service.insertPolicyHolder(newPolicyHolder)) {
+                        JOptionPane.showMessageDialog(null, "Policy Holder Added!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error Adding Policy Holder.");
+                    }
+                    dispose(); // Close the window after adding
+                    
+                } catch (IllegalArgumentException ex) {
+                    JOptionPane.showMessageDialog(null, "Please enter the date in 'yyyy-MM-dd' format.");
                 }
-                dispose(); // Close the window after adding
             }
         });
+        
         add(addButton);
 
         setVisible(true);

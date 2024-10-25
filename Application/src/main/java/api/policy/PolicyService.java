@@ -64,11 +64,11 @@ public class PolicyService {
     }
 
     // Insert new Policy
-    public boolean insertPolicy(Policy policy) {
+    public boolean insertPolicy(application.screens.Policy newPolicy) {
         String sql = "INSERT INTO t_policy (PolicyHolderID, PolicyName, PolicyType, PolicyCost, expiryDate) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            policyHandling(policy, pstmt);
+            policyHandling(newPolicy, pstmt);
             return pstmt.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Error inserting policy: " + e.getMessage());
