@@ -15,17 +15,25 @@ public class InsuranceManagementApp extends JFrame {
 
         JButton addPolicyHolderButton = new JButton("Add New Policy Holder");
         JButton viewPolicyHoldersButton = new JButton("View All Policy Holders");
+        JButton addPolicy = new JButton("Add Policy");
+        JButton updatePolicy = new JButton("Update Policy");
+        JButton deletePolicy = new JButton("Delete Policy");
         JButton listPoliciesButton = new JButton("List Policies and Related Details");
-        JButton findPoliciesButton = new JButton("Find Policies by Claim Number or Holder");
         JButton claimsReportButton = new JButton("Generate Claims Report");
         JButton subscriptionsReportButton = new JButton("Generate Subscriptions Report");
         JButton profitReportButton = new JButton("Generate Profit Report");
         JButton addProductButton = new JButton("Add New Product");
+        
+        
+      
+        
 
         addPolicyHolderButton.addActionListener(e -> new AddPolicyHolderScreen());
         viewPolicyHoldersButton.addActionListener(e -> new ViewPolicyHoldersScreen());
-        // listPoliciesButton.addActionListener(e -> new ListPoliciesScreen());
-        // findPoliciesButton.addActionListener(e -> new FindPoliciesScreen());
+        listPoliciesButton.addActionListener(e -> new RetrievePolicyScreen());
+        addPolicy.addActionListener(e -> new AddPolicyScreen());
+        updatePolicy.addActionListener(e -> new UpdatePolicyScreen());
+        deletePolicy.addActionListener(e -> new DeletePolicyScreen());
         // claimsReportButton.addActionListener(e -> new ClaimsReportScreen());
         // subscriptionsReportButton.addActionListener(e -> new SubscriptionsReportScreen());
        // profitReportButton.addActionListener(e -> new ProfitReportScreen());
@@ -33,8 +41,10 @@ public class InsuranceManagementApp extends JFrame {
 
         add(addPolicyHolderButton);
         add(viewPolicyHoldersButton);
+        add(addPolicy);
         add(listPoliciesButton);
-        add(findPoliciesButton);
+        add(updatePolicy);
+        add(deletePolicy);
         add(claimsReportButton);
         add(subscriptionsReportButton);
         add(profitReportButton);
