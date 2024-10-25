@@ -64,7 +64,7 @@ public class PolicyService {
     }
 
     // Insert new Policy
-    public boolean insertPolicy(application.screens.Policy newPolicy) {
+    public boolean insertPolicy(Policy newPolicy) {
         String sql = "INSERT INTO t_policy (PolicyHolderID, PolicyName, PolicyType, PolicyCost, expiryDate) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
