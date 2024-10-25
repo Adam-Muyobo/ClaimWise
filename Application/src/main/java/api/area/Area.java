@@ -17,7 +17,9 @@ public class Area {
 
     @Override
     public String toString() {
-        return "Area{" + "areaName='" + areaName + '\'' + '}';
+        return "Area [areaName=" + areaName + "]";
     }
+
+    
 }
 

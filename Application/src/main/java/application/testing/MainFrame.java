@@ -1,10 +1,8 @@
 package application.testing;
-
 import api.area.Area;
 import api.area.AreaService;
 import api.policy.Policy;
 import api.policy.PolicyService;
-
 import javax.swing.*;
 import java.awt.*;
 import java.math.BigDecimal;
@@ -13,13 +11,16 @@ import java.util.Date;
 public class MainFrame extends JFrame {
     private final AreaService areaService;
     private final PolicyService policyService;
+    //insert more instance variables for other api classes
 
     private JTextArea areaTextArea;
     private JTextArea policyTextArea;
+    //insert JTextArea instances for other api classes
 
     public MainFrame() {
         areaService = new AreaService();
         policyService = new PolicyService();
+        // create more class objects for api service classes
 
         setTitle("Insurance Database GUI");
         setSize(800, 600);
@@ -34,6 +35,8 @@ public class MainFrame extends JFrame {
         // Policy Panel
         JPanel policyPanel = createPolicyPanel();
         tabbedPane.addTab("Policies", policyPanel);
+
+        // More panels for api classes
 
         add(tabbedPane);
     }
@@ -155,7 +158,7 @@ public class MainFrame extends JFrame {
         // Insert button action
         insertButton.addActionListener(e -> {
             String policyName = policyNameField.getText();
-            Policy policy = new Policy(0, "PH123", policyName, "Life", new BigDecimal(500), new Date());
+            Policy policy = new Policy(0, "PH001", policyName, "Life", new BigDecimal(5000), new Date());
             boolean success = policyService.insertPolicy(policy);
             policyTextArea.setText(success ? "Policy inserted successfully." : "Error inserting policy.");
         });

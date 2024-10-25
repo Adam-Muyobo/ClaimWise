@@ -1,7 +1,5 @@
 package api;
-
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DatabaseTest {
     public static void main(String[] args) {
