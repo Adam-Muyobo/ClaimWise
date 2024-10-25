@@ -12,7 +12,7 @@ public class RetrievePolicyScreen extends JFrame {
     private final JTextField policyNumberField;
     private final JTextArea displayArea;
     private final PolicyService service;
-
+    
     public RetrievePolicyScreen() {
         service = new PolicyService();
 
